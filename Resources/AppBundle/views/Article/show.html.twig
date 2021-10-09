@@ -1,0 +1,105 @@
+<article class="article">
+
+    <h1>{{ article.title }}</h1>
+
+    <div class="row">
+
+        {% if article.hasCover() %}
+            <div class="col-sm-4 pull-right" id="cover">
+                {{ article.getCoverTag({ size: "w175", rel: "lightbox" })|raw }}
+            </div>
+        {% endif %}
+
+        <div class="col-sm-8">
+            <h2 class="authors">
+                {% for people in article.getAuthors() %}
+                    <a href="/{{people.url}}/">
+                      {{ people.fullname }}
+                    </a>
+                {% endfor %}
+            </h2>
+
+            {% if article.isComingSoon() %}
+
+                <p>À paraître le {{ article.pubdate|date('d/m/Y') }}</p>
+
+            {% endif %}
+
+
+            {% if article.has('price') %}
+                <p>{{ article.price|currency(true)|raw }}</p>
+                <p>{{ article.getCartButton('Ajouter au panier')|raw }}</p>
+            {% else %}
+                <p>Gratuit</p>
+                <p>{{ article.getCartButton('Télécharger gratuitement')|raw }}</p>
+            {% endif %}
+
+
+
+            {% if article.hasDownloadableFiles('free') %}
+                <p>
+                    <a class="btn btn-info btn-block" data-toggle="collapse" href="#files"><i class="fa fa-download"></i> Télécharger un extrait</a>
+                <p>
+                <p id="files" class="text-center collapse">
+                    {% for file in article.getDownloadableFiles('free') %}
+                        <a href="{{ file.getUrl() }}" class="btn btn-default btn-sm"><i class="fa fa-file"></i> {{ file.getType('name') }}</a>
+
+                        {% if file.type == "audio/mpeg" %}
+                          <script>
+                            function audioClick(button) {
+                              var fa = button.querySelector('.fa');
+                              if (window.audioPlaying) {
+                                window.audioPlaying = false;
+                                excerpt_{{ file.id }}.pause();
+                                fa.classList.remove('fa-pause');
+                                fa.classList.add('fa-play');
+                              } else {
+                                window.audioPlaying = true;
+                                excerpt_{{ file.id }}.play();
+                                fa.classList.remove('fa-play');
+                                fa.classList.add('fa-pause');
+                              }
+                            }
+                          </script>
+                          <button class="btn btn-default btn-sm" onclick="audioClick(this)"><i class="fa fa-play"></i> Écouter</button>
+                          <audio id="excerpt_{{ file.id }}">
+                            <source src="{{ file.getUrl() }}" type="audio/mpeg">
+                          </audio>
+                        {% endif %}
+
+                    {% endfor %}
+                </p>
+            {% endif %}
+
+            {% if article.excerpts is defined %}
+
+                <div>
+                    <p>
+                        Télécharger gratuitement les premières pages :<br>
+                        {% for e in article.excerpts %}
+                        	<a class="btn btn-xs btn-info" href="{{ e.getUrl() }}"><i class="fa fa-download"></i> {{ e.getType('name') }}</a>
+                        {% endfor %}
+                    </p>
+                </div>
+
+            {% endif %}
+
+            {% if article.has('contents') %}
+
+                <div>{{ article.contents|raw }}</div>
+
+            {% endif %}
+
+        </div>
+    </div>
+</article>
+
+{% if app.user.isAdmin() %}
+  <div class="admin">
+    <p>Article n° {{ article.id }}</p>
+    <p><a href="/pages/adm_article?id={{ article.id }}">modifier</a></p>
+    <p><a href="/pages/adm_stocks?article_id={{ article.id }}">stock</a></p>
+    <p><a href="/pages/adm_stock?add={{ article.id }}">ajouter</a></p>
+  </div>
+{% endif %}
+

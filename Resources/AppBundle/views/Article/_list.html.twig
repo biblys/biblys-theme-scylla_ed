@@ -1,0 +1,48 @@
+<div class="article-list">
+  {% for article in articles|filter(article => article.has('url')) %}
+
+
+    <article class="article">
+
+        <div class="row">
+            <div class="col-md-4 text-center" id="cover">
+                {% if article.hasCover() %}
+                  {{ article.getCoverTag({ size: 'w200' })|raw }}
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <h1>
+                  <a href="{{ path('article_show', { slug: article.url }) }}">
+                    {{ article.title }}
+                  </a>
+                </h1>
+
+                <div>
+                    <p>de {{ article.authors }}</p>
+
+                    <p>
+                        {% if article.isPhysical() %}
+                            Papier
+                        {% else %}
+                            Numérique
+                        {% endif %}
+                    </p>
+
+                    {% if article.has('price') %}
+                        <p>{{ article.price|currency(true)|raw }}</p>
+                        <p>{{ article.getCartButton('Ajouter au panier')|raw }}</p>
+                    {% else %}
+                        <p>Gratuit</p>
+                        <p>{{ article.getCartButton('Télécharger gratuitement')|raw }}</p>
+                    {% endif %}
+                </div>
+
+
+            </div>
+        </div>
+
+    </article>
+    {% endfor %}
+</div>
+
+{% include 'AppBundle:Article:_list_pagination.html.twig' %}

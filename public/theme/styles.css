@@ -1,0 +1,97 @@
+@import url("https://fonts.googleapis.com/css?family=Varela+Round");
+
+/* LAYOUT */
+
+html, body {
+    background: black;
+    font-size: 14px;
+    font-family: 'Varela Round', 'Verdana', sans-serif;
+}
+
+#menu {
+    background: white;
+    max-width: 768px;
+}
+
+#header {
+    text-align: center;
+}
+
+#header img {
+    width: 100%;
+    max-width: 500px;
+    padding: 25px 0;
+}
+
+#menu {
+    /*font-size: 0.9em;*/
+}
+
+#main {
+    background: white;
+    max-width: 768px;
+    padding-bottom: 25px;
+}
+
+#footer {
+    padding: 25px 0;
+    max-width: 768px;
+    text-align: center;
+}
+
+/* TAGS */
+
+a:hover {
+    text-decoration: none;
+}
+
+h1 {
+    margin-bottom: 1em;
+}
+
+/* ARTICLE */
+
+.article .authors {
+    font-size: 1.5em;
+}
+
+/* CROWDFUNDING */
+
+.big {
+    font-size: 2em;
+}
+
+.crowdfunding-aside > div {
+    padding: 10px;
+    background: whiteSmoke;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.crowdfunding-aside .progress {
+    background: lightgray;
+}
+
+.crowdfunding-aside article {
+    padding: 10px;
+    text-align: left;
+    border-top: 1px solid lightgray;
+    font-size: 0.9em;
+}
+
+.crowdfunding-aside .price {
+    font-size: 18px;
+    font-weight: bold;
+    color: green;
+    margin: 15px 0;
+}
+
+/* CATALOG */
+
+.article-list .article {
+    padding-bottom: 10px;
+}
+
+.article-list .article h1 {
+    font-size: 2em;
+}
