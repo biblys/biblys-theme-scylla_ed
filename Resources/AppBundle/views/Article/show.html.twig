@@ -14,7 +14,7 @@
             <h2 class="authors">
                 {% for people in article.getAuthors() %}
                     <a href="/{{people.url}}/">
-                      {{ people.fullname }}
+                      {{ people.name }}
                     </a>
                 {% endfor %}
             </h2>

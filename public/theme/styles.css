@@ -23,6 +23,16 @@ html, body {
     padding: 25px 0;
 }
 
+.header-search-form {
+  display: flex;
+  margin: 0 auto 32px;
+  max-width: 512px;
+}
+
+.header-search-form .search-form-input {
+  margin: 0 8px;
+}
+
 #menu {
     /*font-size: 0.9em;*/
 }

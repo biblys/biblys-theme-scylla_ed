@@ -12,12 +12,16 @@
 	</head>
 	<body>
         <header id="header" class="container hidden-print">
-			<a href="/"><img src="/scylla_ed/img/logo-horizontal.jpg" alt="Éditions Scylla"></a>
+          <a href="/"><img src="/scylla_ed/img/logo-horizontal.jpg" alt="Éditions Scylla"></a>
+          <form class="header-search-form" action="/articles/search">
+            <input type="search" class="form-control search-form-input" name="q" value="{SEARCH_TERMS}" placeholder="Titre, auteur, mot-clé, ISBN...">
+            <button type="submit" class="btn btn-primary search-form-button">Rechercher</button>
+          </form>
         </header>
 
         <nav id="menu" class="container">
             <ul class="nav navbar-nav">
-				<li><a href="/financement/bienvenue-a-sturkeyville-de-bob-leman">Financement participatif</a></li>
+				<li><a href="/financement/tyst-de-luvan">Financement participatif</a></li>
                 <li><a href="/rayon/catalogue">Catalogue</a></li>
                 <li><a href="/rayon/numerique">Numérique</a></li>
                 <li><a href="https://www.scylla.fr/">Librairie</a></li>
