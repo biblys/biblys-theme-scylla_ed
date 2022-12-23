@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" type="image/x-icon" href="/scylla_ed/img/favicon.ico">
+    <title>
+      {% set titleBlock = block("title") %}
+      {% if titleBlock is not empty %}
+        {% block title %}{% endblock %} |
+      {% endif %}
+      {{ app.site.title }}
+    </title>
+
+    {# biblys assets #}
+    {% include "layout:_assets_css.html.twig" %}
+
+    <link rel="stylesheet" href="/theme/styles.css?{{ app.site.getOpt('assets_version') }}"/>
+
+    <!-- Matomo -->
+    <script type="text/javascript">
+      var _paq = window._paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function () {
+        var u = 'https://analytics.biblys.cloud/';
+        _paq.push(['setTrackerUrl', u + 'matomo.php']);
+        _paq.push(['setSiteId', '8']);
+        var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+        g.type = 'text/javascript';
+        g.async = true;
+        g.src = u + 'matomo.js';
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <!-- End Matomo Code -->
+  </head>
+  <body>
+    <header id="header" class="container hidden-print">
+      <a href="/"><img src="/theme/logo-horizontal.jpg" alt="Éditions Scylla"></a>
+      <form class="header-search-form" action="/articles/search">
+        <input type="search" class="form-control search-form-input" name="q" placeholder="Titre, auteur, mot-clé, ISBN...">
+        <button type="submit" class="btn btn-primary search-form-button">Rechercher</button>
+      </form>
+    </header>
+
+    <nav id="menu" class="container">
+      <ul class="nav navbar-nav">
+        <li><a href="/financement/tyst-de-luvan">Financement participatif</a></li>
+        <li><a href="/rayon/catalogue">Catalogue</a></li>
+        <li><a href="/rayon/numerique">Numérique</a></li>
+        <li><a href="https://www.scylla.fr/">Librairie</a></li>
+        <li><a href="/contact/">Contact</a></li>
+        <li id="myCart">{{ cart_status()|raw }}</li>
+      </ul>
+    </nav>ssh bib
+    <section id="main" class="container">
+      {% block main %}{% endblock %}
+    </section>
+    <footer id="footer" class="container hidden-print">
+      <a href="https://www.biblys.fr/"><img src="/assets/images/propulse-par-biblys.png" alt="Propulsé par Biblys"></a>
+    </footer>
+
+    {{ app.axysMenu|raw }}
+    {% include "layout:_assets_js.html.twig" %}
+  </body>
+</html>
