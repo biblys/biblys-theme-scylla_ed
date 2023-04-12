@@ -21,6 +21,7 @@
     {% include "layout:_analytics.html.twig" %}
   </head>
   <body>
+    {% include "layout:_overall_menu.html.twig" %}
     <header id="header" class="container hidden-print">
       <a href="/"><img src="/theme/logo-horizontal.jpg" alt="Éditions Scylla"></a>
       <form class="header-search-form" action="/articles/search">
@@ -46,7 +47,6 @@
       <a href="https://www.biblys.fr/"><img src="/assets/images/propulse-par-biblys.png" alt="Propulsé par Biblys"></a>
     </footer>
 
-    {{ app.axysMenu|raw }}
     {% include "layout:_assets_js.html.twig" %}
   </body>
 </html>
