@@ -27,7 +27,7 @@
           {% endfor %}
         </h2>
 
-        {% if article.isComingSoon() %}
+        {% if article.isComingSoon() and article.has('pubdate') %}
 
           <p>À paraître le {{ article.pubdate|date('d/m/Y') }}</p>
 
