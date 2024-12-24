@@ -12,9 +12,14 @@
 
     <div class="row">
 
-      {% if article.hasCover() %}
+      {% if article.model|hasImage %}
         <div class="col-sm-4 pull-right" id="cover">
-          {{ article.getCoverTag({ size: "w175", rel: "lightbox" })|raw }}
+          {% include "AppBundle:Article:_cover.html.twig" with {
+            article: article.model,
+            class: "article__cover-image",
+            rel: "lightbox",
+            width: 175
+          } %}
         </div>
       {% endif %}
 

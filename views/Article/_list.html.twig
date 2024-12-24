@@ -5,11 +5,14 @@
     <article class="article">
 
       <div class="row">
-        <div class="col-md-4 text-center" id="cover">
-          {% if article.hasCover() %}
-            {{ article.getCoverTag({ size: 'w200' })|raw }}
-          {% endif %}
-        </div>
+        {% if article.model|hasImage %}
+          <div class="col-sm-4 pull-right" id="cover">
+            {% include "AppBundle:Article:_cover.html.twig" with {
+              article: article.model,
+              width: 200
+            } %}
+          </div>
+        {% endif %}
         <div class="col-md-8">
           <h1>
             <a href="{{ path('article_show', { slug: article.url }) }}">
