@@ -31,16 +31,37 @@
       </form>
     </header>
 
-    <nav id="menu" class="container">
-      <ul class="nav navbar-nav">
-        <li><a href="/financement/derriere-le-grillage-1">Financement participatif</a></li>
-        <li><a href="/rayon/catalogue">Catalogue</a></li>
-        <li><a href="/rayon/numerique">Numérique</a></li>
-        <li><a href="https://www.scylla.fr/">Librairie</a></li>
-        <li><a href="/contact/">Contact</a></li>
-        <li id="myCart">{{ cart_status()|raw }}</li>
-      </ul>
+    <nav id="menu" class="container navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/financement/derriere-le-grillage-1">Financement participatif</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/rayon/catalogue">Catalogue</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/rayon/numerique">Numérique</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="https://www.scylla.fr/">Librairie</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/contact/">Contact</a>
+          </li>
+        </ul>
+
+        <div class="nav-item" id="myCart">{{ cart_status()|raw }}</div>
+      </div>
     </nav>
+
     <section id="main" class="container">
       {% block main %}{% endblock %}
     </section>

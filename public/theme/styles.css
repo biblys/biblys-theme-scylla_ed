@@ -40,7 +40,7 @@ html, body {
 #main {
     background: white;
     max-width: 768px;
-    padding-bottom: 25px;
+    padding: 16px 16px 24px;
 }
 
 #footer {
