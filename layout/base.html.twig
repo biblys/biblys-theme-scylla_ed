@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="/theme/styles.css?{{ app.site.getOpt('assets_version') }}"/>
 
     {% include "layout:_analytics.html.twig" %}
+
+    {{ app.metaTags|raw }}
   </head>
   <body>
     {% include "layout:_overall_menu.html.twig" %}
