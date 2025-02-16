@@ -76,7 +76,7 @@
                   }
                 }
               </script>
-              <button class="btn btn-default btn-sm" onclick="audioClick(this)"><i class="fa fa-play"></i> Écouter
+              <button class="btn btn-light btn-sm" onclick="audioClick(this)"><i class="fa fa-play"></i> Écouter
               </button>
               <audio id="excerpt_{{ file.id }}">
                 <source src="{{ file.getUrl() }}" type="audio/mpeg">
@@ -93,7 +93,7 @@
             <p>
               Télécharger gratuitement les premières pages :<br>
               {% for e in article.excerpts %}
-                <a class="btn btn-xs btn-info" href="{{ e.getUrl() }}"><i
+                <a class="btn btn-sm btn-info" href="{{ e.getUrl() }}"><i
                     class="fa fa-download"></i> {{ e.getType('name') }}</a>
               {% endfor %}
             </p>
