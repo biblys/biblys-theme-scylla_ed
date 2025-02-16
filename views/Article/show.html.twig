@@ -47,17 +47,17 @@
           <p>{{ article.getCartButton('Télécharger gratuitement')|raw }}</p>
         {% endif %}
 
-
-
         {% if article.hasDownloadableFiles('free') %}
           <p>
-            <a class="btn btn-info btn-block" data-toggle="collapse" href="#files"><i class="fa fa-download"></i>
+            <a class="btn btn-info" data-toggle="collapse" href="#files"><i class="fa fa-download"></i>
               Télécharger un extrait</a>
           <p>
-          <p id="files" class="text-center collapse">
+
+          <p id="files" class="collapse">
             {% for file in article.getDownloadableFiles('free') %}
-              <a href="{{ file.getUrl() }}" class="btn btn-default btn-sm"><i
-                  class="fa fa-file"></i> {{ file.getType('name') }}</a>
+              <a href="{{ file.getUrl() }}" class="btn btn-light btn-sm">
+                <span class="fa fa-file"></span> {{ file.get('title') }} ({{ file.getType('name') }})
+              </a>
 
               {% if file.type == "audio/mpeg" %}
               <script>
