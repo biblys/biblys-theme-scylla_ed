@@ -41,10 +41,10 @@
 
         {% if article.has('price') %}
           <p>{{ article.price|currency(true)|raw }}</p>
-          <p>{{ article.getCartButton('Ajouter au panier')|raw }}</p>
+          <p>{% include "AppBundle:Article:_cartButtonOrSoldOut.html.twig" with { article: article, label: 'Ajouter au panier' } %}</p>
         {% else %}
           <p>Gratuit</p>
-          <p>{{ article.getCartButton('Télécharger gratuitement')|raw }}</p>
+          <p>{% include "AppBundle:Article:_cartButtonOrSoldOut.html.twig" with { article: article, label: 'Télécharger gratuitement' } %}</p>
         {% endif %}
 
         {% if article.hasDownloadableFiles('free') %}
